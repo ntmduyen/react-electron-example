@@ -1,7 +1,7 @@
 workflows:
   windows-build:
     name: Windows Build
-    instance_type: windows_x2
+    instance_type: mac_mini_m1
     environment:
       groups:
         - prod
@@ -11,7 +11,9 @@ workflows:
       - name: Installing packages
         script: yarn install
       - name: Building Applications
-        script: yarn run make
+        script: yarn build
+      - name: Building Windows Applications
+        script: electron-builder --win
 
     artifacts:
       - out/make/squirrel.windows/x64/*exe
