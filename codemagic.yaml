@@ -12,8 +12,6 @@ workflows:
         script: yarn install
       - name: Building Applications
         script: yarn build
-      - name: Building Windows Applications
-        script: electron-builder --win
 
     artifacts:
       - out/make/squirrel.windows/x64/*exe
