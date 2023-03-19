@@ -1,0 +1,52 @@
+{
+  "name": "cra-electron",
+  "description": "CRA + Electron sitting in a tree",
+  "author": "Kitze",
+  "version": "0.2.7",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "electron-context-menu": "^3.6.1",
+    "electron-is-dev": "^2.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "remote": "^0.2.6",
+    "update-electron-app": "^2.0.1",
+    "wait-on": "^7.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "electron": "^23.1.4"
+  },
+  "build": {
+    "publish": {
+      "provider": "github"
+    }
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
+  "scripts": {
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
